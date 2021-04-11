@@ -11,7 +11,13 @@ html(lang="fr")
         h1 Environnement Linux
         section 
             each line in lines 
-                pre #{line.split(":").join("\r\t")}
+                if (line.indexOf(':'))
+                    - var desc = line.split(':');
+                    ul #{desc[0]}
+                        each detail in desc 
+                                li #{desc[1:]}
+                else
+                    p #{line}
 
             //- p Ceci est la page alternative
         include ./components/footer.pug
