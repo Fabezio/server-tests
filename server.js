@@ -4,7 +4,9 @@ const pug = require('pug')
 const mongoose = require('mongoose')
 
 // inside mods
-const envVars = require('./linuxData')
+const noBashTitle = require('./linuxData')
+const cpu = require('./linuxCPU')
+const distro = require('./linuxDistro')
 const app = express()
 
 const PORT = 3000
@@ -33,7 +35,9 @@ app
   .get('/', (req, res) => res.render('index'))
   // .get('/alt/', (req, res) => res.render('alt'))
   .get('/linux/', (req, res) => {
-    res.render('linux', { envVars })
+    res.render('linux', { toSend: noBashTitle })
   })
+  .get('/cpu/', (req, res) => res.render('linux-cpu', {toSend: cpu}))
+  .get('/distro/', (req, res) => res.render('distro', {toSend: distro}))
   .get('/cats/', (req, res) => res.render('cats', { kittens }))
   .listen(PORT, () => console.log('server listening on port', PORT))

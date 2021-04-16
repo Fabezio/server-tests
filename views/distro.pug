@@ -6,18 +6,14 @@ html(lang="fr")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" href="style.css")
         title test
-
-
-
-
     body 
         include components/navbar
-        h1 Environnement Linux
+        h1 Distribution
         section 
             each detail in toSend 
                 dl
-                    dt.bold #{detail.title}:
-                    dd #{detail.vars}
-
-            //- p Ceci est la page alternative
-        include ./components/footer.pug
+                    dt.bold #{detail[0]}:
+                    dd #{detail[1]}   
+                
+            
+        include components/footer.pug
