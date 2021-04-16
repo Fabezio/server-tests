@@ -50,3 +50,7 @@ section {
     width: 1000px;
     margin: auto;
 }
+
+.bold {
+    font-weight: 400;
+}

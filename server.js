@@ -1,7 +1,10 @@
+// ext modules
 const express = require('express')
 const pug = require('pug')
 const mongoose = require('mongoose')
-const fs = require('fs')
+
+// inside mods
+const envVars = require('./linuxData')
 const app = express()
 
 const PORT = 3000
@@ -30,14 +33,7 @@ app
   .get('/', (req, res) => res.render('index'))
   // .get('/alt/', (req, res) => res.render('alt'))
   .get('/linux/', (req, res) => {
-    const data = fs.readFileSync('linux_env', 'utf8')
-    const lines = data.split(/\r?\n/)
-    // lines.map(line => {
-    //   // console.log(line)
-    //   console.log(line.split(':').join('\n\t'))
-    // })
-
-    res.render('linux', { lines })
+    res.render('linux', { envVars })
   })
   .get('/cats/', (req, res) => res.render('cats', { kittens }))
   .listen(PORT, () => console.log('server listening on port', PORT))

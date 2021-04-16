@@ -6,18 +6,18 @@ html(lang="fr")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet" href="style.css")
         title test
+
+
+
+
     body 
         include components/navbar
         h1 Environnement Linux
         section 
-            each line in lines 
-                if (line.indexOf(':'))
-                    - var desc = line.split(':');
-                    ul #{desc[0]}
-                        each detail in desc 
-                                li #{desc[1:]}
-                else
-                    p #{line}
+            each detail in envVars 
+                dl
+                    dt.bold #{detail.title}:
+                    dd #{detail.vars}
 
             //- p Ceci est la page alternative
         include ./components/footer.pug
