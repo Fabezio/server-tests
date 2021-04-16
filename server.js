@@ -2,6 +2,8 @@
 const express = require('express')
 const pug = require('pug')
 const mongoose = require('mongoose')
+const fs = require('fs')
+const os = require('os')
 
 // inside mods
 const noBashTitle = require('./linuxData')
@@ -37,7 +39,10 @@ app
   .get('/linux/', (req, res) => {
     res.render('linux', { toSend: noBashTitle })
   })
-  .get('/cpu/', (req, res) => res.render('linux-cpu', {toSend: cpu}))
-  .get('/distro/', (req, res) => res.render('distro', {toSend: distro}))
+  .get('/cpu/', (req, res) => res.render('linux-cpu', { toSend: cpu }))
+  .get('/distro/', (req, res) => res.render('distro', { toSend: distro }))
+  .get('/filesystem/', (req, res) => res.render('system', { fs }))
+  .get('/platform/', (req, res) => res.render('platform', { os }))
+  .get('/distro/', (req, res) => res.render('distro', { toSend: distro }))
   .get('/cats/', (req, res) => res.render('cats', { kittens }))
   .listen(PORT, () => console.log('server listening on port', PORT))

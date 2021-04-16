@@ -1,0 +1,54 @@
+doctype html
+html(lang="fr")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="style.css")
+        title test
+    body 
+        include components/navbar
+        h1 Systeme d'exploitation
+        section 
+            h3 memoire
+            dl 
+                dt #[strong memoire disponible] 
+                dd #{os.freemem()/(2**30)} Go
+                dt #[strong memoire totale] 
+                dd #{os.totalmem()/(2**30)} Go
+
+
+            h3 Système d'exploitation
+            dl 
+                dt #[strong plateforme] 
+                dd #{os.platform()}  
+                dt #[strong type OS] 
+                dd #{os.type()}  
+                //- div Type OS #{os.type()}
+                dt #[strong architecture] 
+                dd  #{os.arch()}  
+                dt #[strong version] 
+                dd #{os.release()}
+            //- div #{JSON.stringify(os.constants)}
+            //- div #{os.cpus()}
+            //- div #{os.endianness()}
+
+            h3 utilisateur 
+            dl
+                dt #[strong hote] 
+                dd  #{os.hostname()}  
+                dt #[strong repertoire temporaire] 
+                dd  #{os.tmpdir()}  
+                dt #[strong temps d'utilisation] 
+                dd  #{os.uptime()}  
+
+
+            //- div répertoire temporaire #{os.tmpdir()}
+            //- div temps d'utilisation #{os.uptime()/3600/24}
+            //- div hote #{os.hostname()}
+            //- div #{os.loadavg()}
+            //- div #{os.networkInterfaces()}
+            //- div #{os.userInfo()}
+            //- div #{os.constants.map(constant => div constant)}  
+
+        include components/footer.pug
